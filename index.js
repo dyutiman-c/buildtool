@@ -14,7 +14,6 @@ var apply_variable = function(src, target, objects)
     fs.writeFileSync(target, content);
 }
 
-
 var build_application_configs = function(cfile, environment)
 {
     if (!fs.existsSync(cfile)) {
@@ -26,7 +25,6 @@ var build_application_configs = function(cfile, environment)
         for (var template_path in configs.templates) {
             if (configs.templates.hasOwnProperty(template_path)) {
                 if (fs.existsSync(template_path)) {
-
                     var runtime_variables = {};
                     for(var i=0; i<configs.variables.length; i++) {
                         if(process.env[environment + '_' + configs.variables[i]]) {
@@ -36,8 +34,6 @@ var build_application_configs = function(cfile, environment)
                         }
                     }
                     apply_variable(template_path, configs.templates[template_path], runtime_variables);
-
-
                 }
             }
         }
