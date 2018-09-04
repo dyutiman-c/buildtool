@@ -1,5 +1,8 @@
 {
-  "variables": ["AUTHOR_NAME", "PET_NAME"],
+  "variables": [
+      "AUTHOR_NAME",
+      "PET_NAME"
+  ],
   "templates": {
       "assets/config.template.js": "assets/config.js"
   }
