@@ -2,14 +2,12 @@ var fs = require('fs');
 
 var apply_variable = function(src, target, objects)
 {
-    //console.log([src, target, objects]);
     var content = fs.readFileSync(src).toString('utf8');
     for(key in objects) {
         if (objects.hasOwnProperty(key)) {
             content = content.replace('<' + key + '>', objects[key]);
         }
     };
-    //console.log(content);
     if (fs.existsSync(target)) {
         fs.unlinkSync(target);
     }
@@ -24,8 +22,6 @@ var build_application_configs = function(cfile, environment)
         return false;
     }
     var configs = JSON.parse(fs.readFileSync(cfile));
-    //console.log(environment);
-    //console.log(configs);
     if(typeof configs.templates !== 'undefined') {
         for (var template_path in configs.templates) {
             if (configs.templates.hasOwnProperty(template_path)) {
